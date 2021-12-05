@@ -4,13 +4,17 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "client": "cd client && npm start",
+    "client:build": "cd client && npm run build",
+    "server": "nodemon app.js",
+    "dev": "concurrently --kill-others-on-fail \"npm run client\" \"npm run server\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "concurrently": "^6.4.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^8.6.0",
