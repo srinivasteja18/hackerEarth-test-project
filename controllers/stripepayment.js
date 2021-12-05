@@ -1,3 +1,4 @@
+require("dotenv").config();
 const stripe = require("stripe")(process.env.SECRETKEY);
 const uuid = require("uuid/v4");
 
