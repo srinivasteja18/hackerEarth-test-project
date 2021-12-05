@@ -36,8 +36,6 @@ mongoose
     console.log("ERROR", err);
   });
 
-const port = 7000;
-
 //Routes
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
@@ -53,6 +51,6 @@ app.use(express.static(path.join(__dirname, "client/build")));
 // });
 
 //server
-app.listen(port, () => {
-  console.log(`App is running at ${port}`);
+app.listen(process.env.PORT || 7000, () => {
+  console.log(`App is running at 7000`);
 });
