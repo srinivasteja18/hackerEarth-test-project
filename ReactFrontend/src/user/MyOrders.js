@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getUserOrders } from "../admin/helper/adminapicall";
 import { isAuthenticated } from "../auth/helper";
+import cart from "../images/empty.png";
 
 import { API } from "../backend";
 import Base from "../core/Base";
@@ -72,7 +73,21 @@ const MyOrders = () => {
 
   return (
     <Base title="My Orders" description="manage and deliver the orders">
-      {allOrders()}
+      {!orders.length ? (
+        <div className="empty-cart-div">
+          <div
+            className="empty-cart-img-div"
+            style={{ margin: "0 auto", textAlign: "center" }}
+          >
+            <img alt="product" src={cart} />
+          </div>
+          <Link style={{ margin: "0 auto" }} className="category-button" to="/">
+            Buy Products
+          </Link>
+        </div>
+      ) : (
+        <div>{allOrders()}</div>
+      )}
     </Base>
   );
 };

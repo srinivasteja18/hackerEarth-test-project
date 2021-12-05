@@ -29,6 +29,7 @@ const Signin = () => {
       .then((data) => {
         if (data.error) {
           setValues({ ...values, error: data.error, loading: false });
+          toast("User Account not found!! Please Signup", { type: "warning" });
         } else {
           Authenticate(data, () => {
             setValues({
