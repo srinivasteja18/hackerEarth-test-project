@@ -21,6 +21,7 @@ app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(cookieParser());
 app.use(cors());
+
 // Database connection
 mongoose
   .connect(process.env.DATABASE, {
@@ -47,9 +48,9 @@ app.use("/api", stripeRoutes);
 
 app.use(express.static(path.join(__dirname, "client/build")));
 
-app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "client/build", "index.html"));
-});
+// app.get("*", function (req, res) {
+//   res.sendFile(path.join(__dirname, "client/build", "index.html"));
+// });
 
 //server
 app.listen(port, () => {
