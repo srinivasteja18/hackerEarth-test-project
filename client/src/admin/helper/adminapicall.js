@@ -94,7 +94,7 @@ export const createProduct = (userId, token, product) => {
 
 //Get all Products
 export const getAllProducts = () => {
-  return fetch(`/products`, {
+  return fetch(`${API}products`, {
     method: "GET",
   })
     .then((res) => {
