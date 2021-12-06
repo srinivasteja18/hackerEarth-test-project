@@ -5,7 +5,7 @@ import { getUserOrders } from "../admin/helper/adminapicall";
 import { isAuthenticated } from "../auth/helper";
 import cart from "../images/empty.png";
 
-import { API } from "../backend";
+// import { API } from "../backend";
 import Base from "../core/Base";
 
 const MyOrders = () => {
@@ -40,7 +40,7 @@ const MyOrders = () => {
                   <div className="order-photo-div">
                     <img
                       alt="product"
-                      src={`${API}products/photo/${product._id}`}
+                      src={`/api/products/photo/${product._id}`}
                     />
                   </div>
                   <div className="order-product-details">

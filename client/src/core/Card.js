@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import { API } from "../backend";
+// import { API } from "../backend";
 import { addItemToCart } from "./helper/cartHelper";
 
 const Card = ({ product }) => {
@@ -25,7 +25,7 @@ const Card = ({ product }) => {
     <div className="card">
       {getRedirect(redirect)}
       <div className="card-image-div">
-        <img alt="product" src={`${API}products/photo/${product._id}`} />
+        <img alt="product" src={`/api/products/photo/${product._id}`} />
       </div>
       <div className="card-details">
         <h2 className="card-name">{product.name}</h2>

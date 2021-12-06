@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { isAuthenticated } from "../auth/helper";
-import { API } from "../backend";
+// import { API } from "../backend";
 import Base from "../core/Base";
 import { getAllOrders } from "./helper/adminapicall";
 
@@ -38,7 +38,7 @@ const ManageOrders = () => {
                   <div className="product-photo-div">
                     <img
                       alt="product"
-                      src={`${API}products/photo/${product._id}`}
+                      src={`/api/products/photo/${product._id}`}
                     />
                   </div>
                   <div className="product-details">

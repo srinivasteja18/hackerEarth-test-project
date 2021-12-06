@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { API } from "../backend";
+// import { API } from "../backend";
 import Base from "./Base";
 import { emptyCart, loadCart, removeItemFromCart } from "./helper/cartHelper";
 import StripeCheckout from "react-stripe-checkout";
@@ -48,7 +48,7 @@ const Cart = () => {
     const headers = {
       "Content-Type": "application/json",
     };
-    return fetch(`${API}stripepayment`, {
+    return fetch(`/api/stripepayment`, {
       method: "POST",
       headers: headers,
       body: JSON.stringify(body),
@@ -96,7 +96,7 @@ const Cart = () => {
                 <div className="cart-card-image-div">
                   <img
                     alt="product"
-                    src={`${API}products/photo/${product._id}`}
+                    src={`/api/products/photo/${product._id}`}
                   />
                 </div>
                 <div className="cart-card-details">

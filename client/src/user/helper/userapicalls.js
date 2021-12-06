@@ -1,7 +1,7 @@
-import { API } from "../../backend";
+// import { API } from "../../backend";
 
 export const getUserById = (userId, token) => {
-  return fetch(`${API}user/${userId}`, {
+  return fetch(`/api/user/${userId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -16,7 +16,7 @@ export const getUserById = (userId, token) => {
 };
 
 export const updateUser = (userId, token, user) => {
-  return fetch(`${API}user/update/${userId}`, {
+  return fetch(`/api/user/update/${userId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useState, useEffect } from "react/cjs/react.development";
 import { isAuthenticated } from "../auth/helper";
-import { API } from "../backend";
+// import { API } from "../backend";
 import Base from "../core/Base";
 import { deleteProduct, getAllProducts } from "./helper/adminapicall";
 
@@ -47,10 +47,7 @@ const ManageProducts = () => {
           products.map((product, index) => (
             <div key={index} className="product-card">
               <div className="product-photo-div">
-                <img
-                  alt="product"
-                  src={`${API}products/photo/${product._id}`}
-                />
+                <img alt="product" src={`/api/products/photo/${product._id}`} />
               </div>
               <div className="product-details">
                 <p className="product-detail">
