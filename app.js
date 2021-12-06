@@ -51,6 +51,6 @@ app.use(express.static(path.join(__dirname, "client/build")));
 // });
 
 //server
-app.listen(process.env.PORT || 7000, () => {
+app.listen(process.env.PORT || 7000, "0.0.0.0", () => {
   console.log(`App is running at 7000`);
 });
