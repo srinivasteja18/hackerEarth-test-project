@@ -27,7 +27,13 @@ router.post(
 
 //get
 router.get("/category/:categoryId", getCategory);
-router.get("/categories", getCategories);
+router.get(
+  "/categories/:userId",
+  isSignedIn,
+  isAuthenticated,
+  isAdmin,
+  getCategories
+);
 
 //update
 router.put(

@@ -30,9 +30,12 @@ export const getCategory = (categoryId) => {
 };
 
 //Get Categories
-export const getCategories = () => {
-  return fetch(`/api/categories`, {
+export const getCategories = (userId, token) => {
+  return fetch(`/api/categories/${userId}`, {
     method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   })
     .then((res) => {
       console.log(res);
@@ -93,9 +96,12 @@ export const createProduct = (userId, token, product) => {
 };
 
 //Get all Products
-export const getAllProducts = () => {
-  return fetch(`/api/products`, {
+export const getAllProducts = (userId, token) => {
+  return fetch(`/api/products/${userId}`, {
     method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   })
     .then((res) => {
       return res.json();

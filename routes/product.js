@@ -44,7 +44,13 @@ router.delete(
   deleteProduct
 );
 
-router.get("/products", getAllProducts);
+router.get(
+  "/products/:userId",
+  isSignedIn,
+  isAuthenticated,
+  isAdmin,
+  getAllProducts
+);
 
 router.get("/products/catgeories", getAllUniqueCategories);
 

@@ -11,7 +11,7 @@ const ManageCategories = () => {
   const { user, token } = isAuthenticated();
 
   const preLoad = () => {
-    getCategories().then((data) => {
+    getCategories(user._id, token).then((data) => {
       if (data.error) {
         console.log(data.error);
       } else {
@@ -22,6 +22,7 @@ const ManageCategories = () => {
 
   useEffect(() => {
     preLoad();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //Deleting a product

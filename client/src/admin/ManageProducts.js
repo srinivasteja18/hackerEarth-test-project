@@ -13,7 +13,7 @@ const ManageProducts = () => {
   const { user, token } = isAuthenticated();
 
   const preLoad = () => {
-    getAllProducts().then((data) => {
+    getAllProducts(user._id, token).then((data) => {
       if (data.error) {
         console.log(data.error);
       } else {
@@ -24,6 +24,7 @@ const ManageProducts = () => {
 
   useEffect(() => {
     preLoad();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //Deleting a product
