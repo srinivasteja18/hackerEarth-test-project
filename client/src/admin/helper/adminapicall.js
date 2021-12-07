@@ -96,12 +96,9 @@ export const createProduct = (userId, token, product) => {
 };
 
 //Get all Products
-export const getAllProducts = (userId, token) => {
-  return fetch(`/api/products/${userId}`, {
+export const getAllProducts = () => {
+  return fetch(`/api/products`, {
     method: "GET",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
   })
     .then((res) => {
       return res.json();

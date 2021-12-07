@@ -45,10 +45,8 @@ router.delete(
 );
 
 router.get(
-  "/products/:userId",
-  isSignedIn,
-  isAuthenticated,
-  isAdmin,
+  "/products",
+
   getAllProducts
 );
 

@@ -13,7 +13,7 @@ const ManageProducts = () => {
   const { user, token } = isAuthenticated();
 
   const preLoad = () => {
-    getAllProducts(user._id, token).then((data) => {
+    getAllProducts().then((data) => {
       if (data.error) {
         console.log(data.error);
       } else {
