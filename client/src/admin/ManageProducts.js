@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useState, useEffect } from "react/cjs/react.development";
 import { isAuthenticated } from "../auth/helper";
 // import { API } from "../backend";
 import Base from "../core/Base";
@@ -24,7 +23,6 @@ const ManageProducts = () => {
 
   useEffect(() => {
     preLoad();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //Deleting a product
