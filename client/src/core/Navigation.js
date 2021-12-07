@@ -9,7 +9,7 @@ const Navigation = () => {
   return (
     <div className="header">
       <div className="nav-helper">
-        <h1>ShopingSpace</h1>
+        <h1>ShoppingSpace</h1>
         <ul className="nav-list">
           <li className="nav-item">
             <NavLink
