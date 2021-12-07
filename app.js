@@ -20,7 +20,7 @@ const stripeRoutes = require("./routes/stripepayment");
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(cookieParser());
-// app.use(cors());
+app.use(cors());
 
 // Database connection
 mongoose
