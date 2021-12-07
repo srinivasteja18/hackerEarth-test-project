@@ -20,7 +20,7 @@ const stripeRoutes = require("./routes/stripepayment");
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(cookieParser());
-app.use(cors());
+// app.use(cors());
 
 // Database connection
 mongoose
@@ -52,10 +52,6 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
-
-// app.get("*", function (req, res) {
-//   res.sendFile(path.join(__dirname, "client/build", "index.html"));
-// });
 
 //server
 app.listen(process.env.PORT || 7000, "0.0.0.0", () => {
