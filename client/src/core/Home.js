@@ -11,7 +11,7 @@ export default function Home() {
   const preLoad = () => {
     setLoading(true);
     getAllProducts().then((data) => {
-      if (data && data.error) {
+      if (data.error) {
         console.log("Fetching products Failed!", data.error);
       } else {
         setProducts(data);
