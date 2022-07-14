@@ -14,6 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "better-react-spinkit": "^2.0.4",
     "body-parser": "^1.19.0",
     "concurrently": "^6.4.0",
     "cookie-parser": "^1.4.6",
@@ -30,7 +31,6 @@
     "morgan": "^1.10.0",
     "nodemon": "^1.19.4",
     "npm": "^6.14.15",
-    "stripe": "^8.191.0",
     "uuid": "^3.3.3"
   }
 }

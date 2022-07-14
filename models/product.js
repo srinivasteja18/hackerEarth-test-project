@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { ObjectId } = mongoose.Schema;
 const productSchema = mongoose.Schema(
   {
     name: {
@@ -17,21 +16,6 @@ const productSchema = mongoose.Schema(
     photo: {
       data: Buffer,
       contentType: String,
-    },
-    category: {
-      type: ObjectId,
-      ref: "Category",
-      required: true,
-    },
-    stock: {
-      type: Number,
-    },
-    price: {
-      type: Number,
-    },
-    sold: {
-      type: Number,
-      default: 0,
     },
   },
   { timestamps: true }

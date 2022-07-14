@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from "react";
 import Base from "./Base";
 import Card from "./Card";
-import { getAllProducts } from "../admin/helper/adminapicall";
+import { getAllProducts } from "./helper/productApiCalls";
+import { Link } from "react-router-dom";
+import { Circle } from "better-react-spinkit";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
   const preLoad = () => {
+    setLoading(true);
     getAllProducts().then((data) => {
-      if (data.error) {
+      if (data && data.error) {
         console.log("Fetching products Failed!", data.error);
       } else {
         setProducts(data);
+        setLoading(false);
       }
     });
   };
@@ -18,13 +23,22 @@ export default function Home() {
     preLoad();
   }, []);
 
+  if (loading) {
+    return (
+      <div className="loading-div">
+        <Circle color="white" size={100} />
+      </div>
+    );
+  }
+
   return (
     <Base title="Homepage">
-      {/* <h1 className="middle-section">All Products</h1> */}
       <div className="home-container">
         {products &&
           products.map((product, index) => (
-            <Card key={index} product={product} />
+            <Link className="card-link" key={index} to={`/show/${product._id}`}>
+              <Card product={product} />
+            </Link>
           ))}
       </div>
     </Base>

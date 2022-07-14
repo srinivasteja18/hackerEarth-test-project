@@ -9,12 +9,7 @@ const path = require("path");
 
 const app = express();
 
-const authRoutes = require("./routes/auth");
-const userRoutes = require("./routes/user");
-const categoryRoutes = require("./routes/category");
 const productRoutes = require("./routes/product");
-const orderRoutes = require("./routes/order");
-const stripeRoutes = require("./routes/stripepayment");
 
 //Middle wares
 app.use(bodyParser.json({ limit: "50mb" }));
@@ -37,12 +32,7 @@ mongoose
   });
 
 //Routes
-app.use("/api", authRoutes);
-app.use("/api", userRoutes);
-app.use("/api", categoryRoutes);
-app.use("/api", productRoutes);
-app.use("/api", orderRoutes);
-app.use("/api", stripeRoutes);
+app.use("/", productRoutes);
 
 if (process.env.NODE_ENV === "production") {
   //Set static folder
@@ -54,6 +44,6 @@ if (process.env.NODE_ENV === "production") {
 }
 
 //server
-app.listen(process.env.PORT || 7000, "0.0.0.0", () => {
-  console.log(`App is running at 7000`);
+app.listen(process.env.PORT || 8080, "0.0.0.0", () => {
+  console.log(`App is running at 8080`);
 });

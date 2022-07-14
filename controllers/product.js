@@ -5,17 +5,15 @@ const fs = require("fs");
 const _ = require("lodash");
 
 exports.getProductById = (req, res, next, id) => {
-  Product.findById(id)
-    .populate("category")
-    .exec((err, product) => {
-      if (err) {
-        return res.status(400).json({
-          error: "No product Found",
-        });
-      }
-      req.product = product;
-      next();
-    });
+  Product.findById(id).exec((err, product) => {
+    if (err) {
+      return res.status(400).json({
+        error: "No product Found",
+      });
+    }
+    req.product = product;
+    next();
+  });
 };
 
 exports.createProduct = (req, res) => {
@@ -30,8 +28,8 @@ exports.createProduct = (req, res) => {
     }
 
     //validating the fields
-    const { name, description, category, price, stock } = fields;
-    if (!name || !description || !category || !price || !stock) {
+    const { name, description, price, stock } = fields;
+    if (!name || !description || !price || !stock) {
       return res.status(400).json({
         error: "Please provide required details",
       });
@@ -48,7 +46,6 @@ exports.createProduct = (req, res) => {
       product.photo.contentType = file.photo.type;
     }
     //saving product into DB
-    //console.log(product);
     product.save((err, product) => {
       if (err) {
         return res.status(400).json({
@@ -116,31 +113,13 @@ exports.deleteProduct = (req, res) => {
 };
 
 exports.getAllProducts = (req, res) => {
-  let limit = req.query.limit ? parseInt(req.query.limit) : 8;
-  let sortBy = req.query.sortBy ? req.query.sortBy : "_id";
-
-  Product.find()
-    .populate("category")
-    .sort([[sortBy, "asc"]])
-    .limit(limit)
-    .exec((err, products) => {
-      if (err) {
-        return res.status(400).json({
-          error: "No Products found",
-        });
-      }
-      res.json(products);
-    });
-};
-
-exports.getAllUniqueCategories = (req, res) => {
-  Product.distinct("catgeory", {}, (err, categories) => {
+  Product.find().exec((err, products) => {
     if (err) {
       return res.status(400).json({
-        error: "No categories found!!",
+        error: "No Products found",
       });
     }
-    res.json(categories);
+    res.json(products);
   });
 };
 
@@ -151,24 +130,4 @@ exports.photo = (req, res, next) => {
     return res.send(req.product.photo.data);
   }
   next();
-};
-
-//middleware to update stock and sold
-exports.updateStock = (req, res, next) => {
-  let myOperations = req.body.order.products.map((product) => {
-    return {
-      UpdateOne: {
-        filter: { _id: product.id },
-        update: { $inc: { stock: -product.count, sold: +product.count } },
-      },
-    };
-  });
-  Product.bulkWrite(myOperations, {}, (err, products) => {
-    if (err) {
-      return res.status(400).json({
-        error: "Buld operations failed!!",
-      });
-    }
-    next();
-  });
 };
