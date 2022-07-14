@@ -1,5 +1,5 @@
 
-You can view my profile live here - https://shop-spot.herokuapp.com/
+You can view this app live here - https://gallery-crud-app-project.herokuapp.com/
 
 # Getting Started with Create React App
 
